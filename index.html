@@ -4,19 +4,19 @@
 <meta charset="utf-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.6.1">
+<meta name="generator" content="Asciidoctor 1.5.5">
 <title>Migrating from Maven to Gradle</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
 <link crossorigin href="//assets.gradle.com" rel="preconnect">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,400i">
-<link rel="stylesheet" href="https://guides.gradle.org/css/asciidoctor.css">
-<link rel="stylesheet" href="https://guides.gradle.org/css/docs-blue-theme-4.8.1.css">
+<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+<link rel="stylesheet" href="https://guides.gradle.org/css/docs-blue-theme-4.10.css">
 <link rel="apple-touch-icon" sizes="180x180" href="https://guides.gradle.org/icon/apple-touch-icon.png">
 <link rel="icon" type="image/png" href="https://guides.gradle.org/icon/favicon-32x32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="https://guides.gradle.org/icon/favicon-16x16.png" sizes="16x16">
 <link rel="manifest" href="https://guides.gradle.org/icon/manifest.json">
 <link rel="shortcut icon" href="https://guides.gradle.org/icon/favicon.ico">
-<script defer src="https://guides.gradle.org/js/guides-4.8.js"></script>
+<script defer src="https://guides.gradle.org/js/guides-4.10.js"></script>
 <script defer src="https://guides.gradle.org/js/set-time-to-complete-text.js"></script>
 <script async src="https://guides.gradle.org/js/autotrack.js"></script>
 
@@ -167,22 +167,6 @@
     <div class="chapter">
 <div id="header">
 <h1>Migrating from Maven to Gradle</h1>
-</div>
-<div id="content">
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>"Welcome to the Gradle community!"&#8230;&#8203; at least that&#8217;s what we hope to say once you&#8217;ve completed this guide.</p>
-</div>
-<div class="paragraph">
-<p>Converting a build can be scary, but you don&#8217;t have to do it alone.
-You can search docs, forums, and StackOverflow from <a href="https://gradle.org/help">help.gradle.org</a> or reach out to the <a href="https://discuss.gradle.org/c/help-discuss">Gradle community on the forums</a> if you get stuck.</p>
-</div>
-<div class="paragraph">
-<p><a href="https://maven.apache.org">Apache Maven</a> is a build tool for Java and other JVM-based projects that&#8217;s in widespread use, and so people that want to use Gradle often have to migrate an existing Maven build.
-This guide will help with such a migration by explaining the differences and similarities between the two tools' models and providing steps that you can follow to ease the process.</p>
-</div>
-</div>
 <div id="toc" class="toc">
 <div id="toctitle">Contents</div>
 <ul class="sectlevel1">
@@ -200,6 +184,22 @@ This guide will help with such a migration by explaining the differences and sim
 <li><a href="#next_steps">Next steps</a></li>
 <li><a href="#help_improve_this_guide">Help improve this guide</a></li>
 </ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>"Welcome to the Gradle community!"&#8230;&#8203; at least that&#8217;s what we hope to say once you&#8217;ve completed this guide.</p>
+</div>
+<div class="paragraph">
+<p>Converting a build can be scary, but you don&#8217;t have to do it alone.
+You can search docs, forums, and StackOverflow from <a href="https://gradle.org/help">help.gradle.org</a> or reach out to the <a href="https://discuss.gradle.org/c/help-discuss">Gradle community on the forums</a> if you get stuck.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://maven.apache.org">Apache Maven</a> is a build tool for Java and other JVM-based projects that&#8217;s in widespread use, and so people that want to use Gradle often have to migrate an existing Maven build.
+This guide will help with such a migration by explaining the differences and similarities between the two tools' models and providing steps that you can follow to ease the process.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -258,7 +258,7 @@ That basically consists of parsing the existing POMs and generating correspondin
 </div>
 <div class="paragraph">
 <p>You&#8217;ll find that the new Gradle build includes any custom repositories specified in the POM, your external and inter-project dependencies, the appropriate plugins (any of <code>maven</code>, <code>java</code>, and <code>war</code>), and more.
-See the user guide for <a href="https://docs.gradle.org/4.7/userguide/build_init_plugin.html#sec:pom_maven_conversion_">a complete list of the automatic conversion features</a>.</p>
+See the user guide for <a href="https://docs.gradle.org/4.10-rc-2/userguide/build_init_plugin.html#sec:pom_maven_conversion_">a complete list of the automatic conversion features</a>.</p>
 </div>
 <div class="paragraph">
 <p>One thing to bear in mind is that assemblies are not automatically converted.
@@ -322,7 +322,7 @@ In Gradle however, it is done via a regular dependency declaration on the BOM.</
 </table>
 </div>
 <div class="paragraph">
-<p>More information is available in the user manual section on <a href="https://docs.gradle.org/4.7/userguide/managing_transitive_dependencies.html#sec:bom_import">importing version recommendations from a Maven BOM</a>.</p>
+<p>More information is available in the user manual section on <a href="https://docs.gradle.org/4.10-rc-2/userguide/managing_transitive_dependencies.html#sec:bom_import">importing version recommendations from a Maven BOM</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -351,7 +351,7 @@ The same basic behavior can be had from the <a href="https://blog.gradle.org/int
 For versions before Gradle 5.0, you must add <code>enableFeaturePreview('IMPROVED_POM_SUPPORT')</code> to <em>settings.gradle</em>.</p>
 </div>
 <div class="paragraph">
-<p>Learn more about dependency constraints in the <a href="https://docs.gradle.org/4.7/userguide/managing_transitive_dependencies.html#sec:dependency_constraints">Gradle user manual on managing transitive dependencies</a>.</p>
+<p>Learn more about dependency constraints in the <a href="https://docs.gradle.org/4.10-rc-2/userguide/managing_transitive_dependencies.html#sec:dependency_constraints">Gradle user manual on managing transitive dependencies</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -393,7 +393,7 @@ You can, for example, define properties in:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Those aren&#8217;t the only options, so if you are interested in finding out more about how and where you can define properties, <a href="https://docs.gradle.org/4.7/userguide/build_environment.html">check out the user guide</a>.</p>
+<p>Those aren&#8217;t the only options, so if you are interested in finding out more about how and where you can define properties, <a href="https://docs.gradle.org/4.10-rc-2/userguide/build_environment.html">check out the user guide</a>.</p>
 </div>
 <div class="paragraph">
 <p>One important piece of behavior you need to be aware of is what happens when the same property is defined in both the build file and one of the external properties files: the build file value takes precedence.
@@ -469,7 +469,7 @@ This variable substitution will apply to all your resource files (the ones under
 <div class="paragraph">
 <p>Gradle has other powerful ways for property processing.
 You can hook in your own filter via a closure that allows you to process the content line by line, or you can add your own <code>FilterReader</code> implementation.
-For more details, see the documentation for the <a href="https://docs.gradle.org/4.7/javadoc/org/gradle/api/file/ContentFilterable.html">ContentFilterable</a> interface which all copy and archive tasks implement.</p>
+For more details, see the documentation for the <a href="https://docs.gradle.org/4.10-rc-2/javadoc/org/gradle/api/file/ContentFilterable.html">ContentFilterable</a> interface which all copy and archive tasks implement.</p>
 </div>
 </div>
 </div>
@@ -555,7 +555,7 @@ That&#8217;s done in the normal way in the <code>dependencies</code> block:</p>
 </div>
 <div class="paragraph">
 <p>In the above example, I&#8217;m assuming that the integration tests run against an application server that needs to be started and shut down at the appropriate times.
-You can learn more about how and what to configure on the <code>Test</code> task in Gradle&#8217;s <a href="https://docs.gradle.org/4.7/dsl/org.gradle.api.tasks.testing.Test.html">DSL Reference</a>.</p>
+You can learn more about how and what to configure on the <code>Test</code> task in Gradle&#8217;s <a href="https://docs.gradle.org/4.10-rc-2/dsl/org.gradle.api.tasks.testing.Test.html">DSL Reference</a>.</p>
 </div>
 <div class="paragraph">
 <p>All that&#8217;s left to do at this point is incorporate the <code>integTest</code> task into your task graph, for example by having <code>build</code> depend on it.
@@ -669,7 +669,7 @@ For example, you can use Ant&#8217;s Echo task like this:</p>
 </div>
 <div class="paragraph">
 <p>Even Ant properties and filesets are supported natively.
-To learn more, check out the <a href="https://docs.gradle.org/4.7/userguide/ant.html">Ant chapter</a> of the user guide.</p>
+To learn more, check out the <a href="https://docs.gradle.org/4.10-rc-2/userguide/ant.html">Ant chapter</a> of the user guide.</p>
 </div>
 </div>
 </div>
@@ -716,7 +716,7 @@ You&#8217;ll probably find that the two build models are different enough that "
 On the plus side, the plugin is likely to be much easier to write than the original Maven one because Gradle has a much richer build model.</p>
 </div>
 <div class="paragraph">
-<p>If you do need to implement custom logic, either via build files or plugins, then be sure to familiarize yourself with Gradle&#8217;s <a href="https://docs.gradle.org/4.7/dsl/">DSL Reference</a>, which provides comprehensive documentation on the API that you&#8217;ll be working with.
+<p>If you do need to implement custom logic, either via build files or plugins, then be sure to familiarize yourself with Gradle&#8217;s <a href="https://docs.gradle.org/4.10-rc-2/dsl/">DSL Reference</a>, which provides comprehensive documentation on the API that you&#8217;ll be working with.
 It details the standard configuration blocks (and the objects that back them), the core types in the system (<code>Project</code>, <code>Task</code>, etc.), and the standard set of tasks.
 The main entry point is the <code>Project</code> interface as that&#8217;s the top-level object that backs the build files.</p>
 </div>
@@ -730,7 +730,7 @@ The main entry point is the <code>Project</code> interface as that&#8217;s the t
 </div>
 <div class="paragraph">
 <p>Once you have your Gradle build working functionally, it is always worth a 2nd pass to ensure that your build is fast and maintainable.
-See Gradle documentation on <a href="https://docs.gradle.org/4.7/userguide/organizing_build_logic.html">organizing build logic</a> and <a href="https://guides.gradle.org/performance/">optimizing build performance</a>.
+See Gradle documentation on <a href="https://docs.gradle.org/4.10-rc-2/userguide/organizing_build_logic.html">organizing build logic</a> and <a href="https://guides.gradle.org/performance/">optimizing build performance</a>.
 It would also be good to document any decisions made for your build, such as how you store and maintain dependency versions.</p>
 </div>
 <div class="paragraph">
